@@ -8,10 +8,13 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      // fontFamily: {
+      //   ransel: ["Ransel"],
+      // },
+      colors: {
+        darkGray: '#2D2D2D',
+        lightGray: '#525050',
+        cloud: '#DDDDDD',
       },
     },
   },
