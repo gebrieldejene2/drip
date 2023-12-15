@@ -4,26 +4,6 @@ import Link from 'next/link'
 import { Dialog, Transition } from '@headlessui/react'
 import { HeartIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
-export const WishlistButton = () => {
-  const [open, setOpen] = useState(false)
-  return (
-    <>
-      <button
-        onClick={() => {
-          setOpen(true)
-        }}>
-        <HeartIcon className="h-6 w-6" />
-      </button>
-      <WishlistNav
-        open={open}
-        close={() => {
-          setOpen(false)
-        }}
-      />
-    </>
-  )
-}
-
 const WishlistNav = ({ open, close }: { open: boolean; close: () => void }) => {
   const products = [
     {
@@ -184,3 +164,25 @@ const WishlistNav = ({ open, close }: { open: boolean; close: () => void }) => {
     </Transition.Root>
   )
 }
+
+const WishlistButton = () => {
+  const [open, setOpen] = useState(false)
+  return (
+    <>
+      <button
+        onClick={() => {
+          setOpen(true)
+        }}>
+        <HeartIcon className="h-6 w-6" />
+      </button>
+      <WishlistNav
+        open={open}
+        close={() => {
+          setOpen(false)
+        }}
+      />
+    </>
+  )
+}
+
+export default WishlistButton

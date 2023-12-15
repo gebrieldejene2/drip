@@ -3,31 +3,11 @@ import { Fragment, useState } from 'react'
 import { Dialog, Tab, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
-export const MobileMenuButton = () => {
-  const [open, setOpen] = useState(false)
-  return (
-    <>
-      <button
-        onClick={() => {
-          setOpen(true)
-        }}>
-        <Bars3Icon className="h-8 w-8" />
-      </button>
-      <MobileMenuNav
-        open={open}
-        close={() => {
-          setOpen(false)
-        }}
-      />
-    </>
-  )
-}
-
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export const MobileMenuNav = ({ open, close }: { open: boolean; close: () => void }) => {
+const MobileMenuNav = ({ open, close }: { open: boolean; close: () => void }) => {
   const navigation = {
     categories: [
       {
@@ -298,3 +278,25 @@ export const MobileMenuNav = ({ open, close }: { open: boolean; close: () => voi
     </Transition.Root>
   )
 }
+
+const MobileMenuButton = () => {
+  const [open, setOpen] = useState(false)
+  return (
+    <>
+      <button
+        onClick={() => {
+          setOpen(true)
+        }}>
+        <Bars3Icon className="h-8 w-8" />
+      </button>
+      <MobileMenuNav
+        open={open}
+        close={() => {
+          setOpen(false)
+        }}
+      />
+    </>
+  )
+}
+
+export default MobileMenuButton
