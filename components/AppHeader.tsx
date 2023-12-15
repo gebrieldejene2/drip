@@ -1,7 +1,9 @@
 import { MagnifyingGlassIcon, UserIcon } from '@heroicons/react/24/outline'
+
+//components
+import { CartButton } from './AppCart'
 import { MobileMenuButton } from './AppMobileMenu'
 import { WishlistButton } from './AppWishlist'
-import { CartButton } from './AppCart'
 
 export const AppHeader = () => {
   return (
