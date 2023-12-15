@@ -3,8 +3,9 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 //components
-import AppHeader from '@/components/AppHeader'
+import { TopBar } from '@/components/TopBar'
 import { AppFooter } from '@/components/AppFooter'
+import { AppHeader } from '@/components/AppHeader'
 
 export const metadata: Metadata = {
   title: 'Dripylux',
@@ -14,12 +15,15 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html>
-      <body>
-        <div className="">
-          <AppHeader />
+      <body className="flex w-full flex-col items-center">
+        <div className="flex w-full flex-col">
+          <TopBar />
+          <div className="w-full">
+            <AppHeader />
+          </div>
         </div>
-        <div className="">{children}</div>
-        <div className="">
+        <main className="w-full">{children}</main>
+        <div className="w-full">
           <AppFooter />
         </div>
       </body>

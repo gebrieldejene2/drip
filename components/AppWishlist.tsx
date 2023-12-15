@@ -1,7 +1,29 @@
-import { Fragment } from 'react'
+'use client'
+import { Fragment, useState } from 'react'
 import Link from 'next/link'
 import { Dialog, Transition } from '@headlessui/react'
-import { XMarkIcon } from '@heroicons/react/24/outline'
+import { HeartIcon, XMarkIcon } from '@heroicons/react/24/outline'
+
+export const WishlistButton = () => {
+  const [open, setOpen] = useState(false)
+  return (
+    <>
+      <button
+        onClick={() => {
+          setOpen(true)
+        }}
+      >
+        <HeartIcon className="h-6 w-6" />
+      </button>
+      <AppWishlist
+        open={open}
+        close={() => {
+          setOpen(false)
+        }}
+      />
+    </>
+  )
+}
 
 const AppWishlist = ({ open, close }: { open: boolean; close: () => void }) => {
   const products = [
@@ -60,7 +82,8 @@ const AppWishlist = ({ open, close }: { open: boolean; close: () => void }) => {
           enterTo="opacity-100"
           leave="ease-in-out duration-300"
           leaveFrom="opacity-100"
-          leaveTo="opacity-0">
+          leaveTo="opacity-0"
+        >
           <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
         </Transition.Child>
 
@@ -74,7 +97,8 @@ const AppWishlist = ({ open, close }: { open: boolean; close: () => void }) => {
                 enterTo="translate-x-0"
                 leave="transform transition ease-in-out duration-500 sm:duration-300"
                 leaveFrom="translate-x-0"
-                leaveTo="translate-x-full">
+                leaveTo="translate-x-full"
+              >
                 <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
                   <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                     <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
@@ -86,7 +110,8 @@ const AppWishlist = ({ open, close }: { open: boolean; close: () => void }) => {
                           <button
                             type="button"
                             className="relative -m-2 p-2 text-gray-400 hover:text-gray-500"
-                            onClick={close}>
+                            onClick={close}
+                          >
                             <span className="absolute -inset-0.5" />
                             <span className="sr-only">Close panel</span>
                             <XMarkIcon className="h-6 w-6" aria-hidden="true" />
@@ -123,7 +148,8 @@ const AppWishlist = ({ open, close }: { open: boolean; close: () => void }) => {
                                     <div className="flex">
                                       <button
                                         type="button"
-                                        className="font-medium text-red-700 hover:text-red-500">
+                                        className="font-medium text-red-700 hover:text-red-500"
+                                      >
                                         Remove
                                       </button>
                                     </div>
@@ -148,7 +174,8 @@ const AppWishlist = ({ open, close }: { open: boolean; close: () => void }) => {
                         <Link
                           href={''}
                           onClick={close}
-                          className="flex w-full items-center justify-center bg-black px-6 py-3 text-base font-medium text-white shadow-sm">
+                          className="flex w-full items-center justify-center bg-black px-6 py-3 text-base font-medium text-white shadow-sm"
+                        >
                           Checkout
                         </Link>
                       </div>
@@ -163,5 +190,3 @@ const AppWishlist = ({ open, close }: { open: boolean; close: () => void }) => {
     </Transition.Root>
   )
 }
-
-export default AppWishlist
